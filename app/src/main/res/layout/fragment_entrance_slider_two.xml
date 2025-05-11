@@ -78,7 +78,6 @@
             android:src="@drawable/dot_unselected"/>
     </LinearLayout>
 
-    <!-- Next Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/nextButton"
         android:layout_width="0dp"

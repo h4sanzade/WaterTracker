@@ -17,7 +17,7 @@ class WelcomeScreenFragment : Fragment() {
     private val binding get() = _binding!!
     private val animationDuration = 100L
     private val delayBetweenDots = 50L
-    private val splashDelay = 5000L // 5 saniye
+    private val splashDelay = 5000L
     private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreateView(
@@ -37,15 +37,14 @@ class WelcomeScreenFragment : Fragment() {
 
         startSequentialAnimation(dots, 0)
 
-        // 5 saniye sonra diğer fragment'e geçiş yap
+
         handler.postDelayed({
             navigateToNextFragment()
         }, splashDelay)
     }
 
     private fun navigateToNextFragment() {
-        if (isAdded && !isDetached()) {  // Fragment hala ekli mi kontrol et
-            // Navigation Component ile diğer fragment'e geçiş
+        if (isAdded && !isDetached()) {
             findNavController().navigate(R.id.action_welcomeScreenFragment_to_entranceSliderOneFragment)
         }
     }
@@ -89,7 +88,6 @@ class WelcomeScreenFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        // Handler mesajlarını temizle ve animasyonları durdur
         handler.removeCallbacksAndMessages(null)
         listOf(binding.dot1, binding.dot2, binding.dot3, binding.dot4, binding.dot5).forEach {
             it.clearAnimation()
