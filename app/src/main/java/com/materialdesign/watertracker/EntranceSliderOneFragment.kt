@@ -30,10 +30,9 @@ class EntranceSliderOneFragment : Fragment() {
 
         binding.nextButton.setOnClickListener {
             currentPage++
-            if (currentPage > 2) {
-                // Son sayfada Next'e basıldığında ikinci fragmente geçiş yapıyoruz
+            if (currentPage == 1) {
+                // Birinci sayfa geçildiğinde ikinci fragmente geçiş yap
                 findNavController().navigate(R.id.action_entranceSliderOneFragment_to_entranceSliderTwoFragment)
-                currentPage = 0 // Veya döngü yapmak istemiyorsanız bu satırı silin
             }
             updateIndicators(currentPage)
         }
@@ -60,14 +59,6 @@ class EntranceSliderOneFragment : Fragment() {
                 binding.mainText.text = getString(R.string.smart_reminders_tailored_to_you)
                 binding.subText.text = getString(R.string.quick_and_easy_to_set_your_hydration_goal_and_then_track_your_daily_water_intake_progress)
                 binding.drinkWaterImg.setImageResource(R.drawable.drinkwater_slide2_img)
-            }
-            2 -> {
-//                binding.dot3.setImageResource(R.drawable.dot_selected)
-//                // Üçüncü sayfa içeriğini güncelle
-//                binding.mainText.text = getString(R.string.get_reminders)
-//                binding.subText.text = getString(R.string.never_forget_to_drink_water)
-//                binding.drinkWaterImg.setImageResource(R.drawable.imgreminder)
-//                binding.nextButton.text = getString(R.string.get_started)
             }
         }
     }

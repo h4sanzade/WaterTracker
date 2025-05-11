@@ -24,11 +24,10 @@ class EntranceSliderTwoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Example of what you can do when the second fragment is reached
+        // Next button onClick listener
         binding.nextButton.setOnClickListener {
-            // Navigate to another fragment or perform another action when "Next" is clicked
-            // Example: Navigate to a final screen
-            findNavController().navigate(R.id.entranceSliderOneFragment)
+            // Navigate to the third fragment (EntranceSliderThreeFragment)
+            findNavController().navigate(R.id.entranceSliderThreeFragment)
         }
     }
 

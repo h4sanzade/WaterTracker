@@ -27,5 +27,14 @@
         android:id="@+id/entranceSliderTwoFragment"
         android:name="com.materialdesign.watertracker.EntranceSliderTwoFragment"
         android:label="fragment_entrance_slider_two"
-        tools:layout="@layout/fragment_entrance_slider_two" />
+        tools:layout="@layout/fragment_entrance_slider_two" >
+        <action
+            android:id="@+id/action_entranceSliderTwoFragment_to_entranceSliderThreeFragment"
+            app:destination="@id/entranceSliderThreeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/entranceSliderThreeFragment"
+        android:name="com.materialdesign.watertracker.EntranceSliderThreeFragment"
+        android:label="fragment_entrance_slider_three"
+        tools:layout="@layout/fragment_entrance_slider_three" />
 </navigation>
