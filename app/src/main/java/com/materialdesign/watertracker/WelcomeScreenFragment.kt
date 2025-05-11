@@ -1,3 +1,5 @@
+package com.materialdesign.watertracker
+
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -27,6 +29,8 @@ class WelcomeScreenFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         val dots = listOf(
             binding.dot1, binding.dot2, binding.dot3, binding.dot4, binding.dot5
         )
@@ -40,10 +44,10 @@ class WelcomeScreenFragment : Fragment() {
     }
 
     private fun navigateToNextFragment() {
-        // Navigation Component ile diğer fragment'e geçiş
-        findNavController().navigate(
-            WelcomeScreenFragmentDirections.actionWelcomeScreenFragmentToEntranceSliderOneFragment()
-        )
+        if (isAdded && !isDetached()) {  // Fragment hala ekli mi kontrol et
+            // Navigation Component ile diğer fragment'e geçiş
+            findNavController().navigate(R.id.action_welcomeScreenFragment_to_entranceSliderOneFragment)
+        }
     }
 
     private fun startSequentialAnimation(dots: List<View>, index: Int) {

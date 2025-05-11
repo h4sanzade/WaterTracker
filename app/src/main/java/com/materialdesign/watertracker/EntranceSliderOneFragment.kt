@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.materialdesign.watertracker.databinding.FragmentEntranceSliderOneBinding
 
 class EntranceSliderOneFragment : Fragment() {
@@ -30,9 +31,8 @@ class EntranceSliderOneFragment : Fragment() {
         binding.nextButton.setOnClickListener {
             currentPage++
             if (currentPage > 2) {
-                // Son sayfada Next'e basıldığında yapılacak işlem
-                // Örneğin ana ekrana geçiş
-                // findNavController().navigate(R.id.action_to_home)
+                // Son sayfada Next'e basıldığında ikinci fragmente geçiş yapıyoruz
+                findNavController().navigate(R.id.action_entranceSliderOneFragment_to_entranceSliderTwoFragment)
                 currentPage = 0 // Veya döngü yapmak istemiyorsanız bu satırı silin
             }
             updateIndicators(currentPage)
@@ -55,18 +55,18 @@ class EntranceSliderOneFragment : Fragment() {
                 binding.drinkWaterImg.setImageResource(R.drawable.drinkwater_img)
             }
             1 -> {
-//                binding.dot2.setImageResource(R.drawable.dot_selected)
-//                // İkinci sayfa içeriğini güncelle
-//                binding.mainText.text = getString(R.string.set_your_daily_water_goal)
-//                binding.subText.text = getString(R.string.personalize_your_hydration_target)
-//                binding.drinkWaterImg.setImageResource(R.drawable.imgWaterGoal)
+                binding.dot2.setImageResource(R.drawable.dot_selected)
+                // İkinci sayfa içeriğini güncelle
+                binding.mainText.text = getString(R.string.smart_reminders_tailored_to_you)
+                binding.subText.text = getString(R.string.quick_and_easy_to_set_your_hydration_goal_and_then_track_your_daily_water_intake_progress)
+                binding.drinkWaterImg.setImageResource(R.drawable.drinkwater_slide2_img)
             }
             2 -> {
 //                binding.dot3.setImageResource(R.drawable.dot_selected)
-                // Üçüncü sayfa içeriğini güncelle
+//                // Üçüncü sayfa içeriğini güncelle
 //                binding.mainText.text = getString(R.string.get_reminders)
 //                binding.subText.text = getString(R.string.never_forget_to_drink_water)
-//                binding.drinkWaterImg.setImageResource(R.drawable.imgReminder)
+//                binding.drinkWaterImg.setImageResource(R.drawable.imgreminder)
 //                binding.nextButton.text = getString(R.string.get_started)
             }
         }
