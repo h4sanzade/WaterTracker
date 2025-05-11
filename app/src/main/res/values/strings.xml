@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WaterTracker</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drops_water_tracker">Drops Water Tracker</string>
+    <string name="stay_hydrated_and_track_your_daily_water_intake">Stay hydrated and track your \ndaily water intake</string>
+    <string name="track_your_daily_water_intake_with_us">Track your daily water \nintake with Us.</string>
+    <string name="achieve_your_hydration_goals_with_a_simple_tap">Achieve your hydration goals with a simple \ntap!</string>
+    <string name="next">Next</string>
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_welcome"
+    app:startDestination="@id/welcomeScreenFragment">
+
+    <fragment
+        android:id="@+id/welcomeScreenFragment"
+        android:name="WelcomeScreenFragment"
+        android:label="WelcomeScreenFragment" >
+        <action
+            android:id="@+id/action_welcomeScreenFragment_to_entranceSliderOneFragment"
+            app:destination="@id/entranceSliderOneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/entranceSliderOneFragment"
+        android:name="com.materialdesign.watertracker.EntranceSliderOneFragment"
+        android:label="fragment_entrance_slider_one"
+        tools:layout="@layout/fragment_entrance_slider_one" />
+</navigation>
