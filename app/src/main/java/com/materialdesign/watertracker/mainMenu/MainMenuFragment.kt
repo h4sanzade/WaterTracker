@@ -35,20 +35,11 @@ class MainMenuFragment : Fragment() {
         if (username == null) {
             showNameInputDialog()
         } else {
-            updateGreeting(username)
+            val greetingMessage = GreetingUtil.getGreetingMessage(username)
+            val parts = greetingMessage.split(",")
+            binding.greetingPrefix.text = parts[0]
+            binding.greetingName.text = parts[1].trim()
         }
-    }
-
-    private fun updateGreeting(username: String) {
-        val greeting = when (java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY)) {
-            in 5..11 -> "Good morning"
-            in 12..16 -> "Good afternoon"
-            in 17..20 -> "Good evening"
-            else -> "Good night"
-        }
-        
-        binding.greetingPrefix.text = "$greeting,"
-        binding.greetingName.text = username
     }
 
     private fun showNameInputDialog() {
@@ -75,7 +66,10 @@ class MainMenuFragment : Fragment() {
                 sharedPrefs.edit().putString("username", fullName).apply()
 
                 Toast.makeText(requireContext(), "Name saved!", Toast.LENGTH_SHORT).show()
-                updateGreeting(fullName)
+                val greetingMessage = GreetingUtil.getGreetingMessage(fullName)
+                val parts = greetingMessage.split(",")
+                binding.greetingPrefix.text = parts[0]
+                binding.greetingName.text = parts[1].trim()
                 dialog.dismiss()
             } else {
                 Toast.makeText(requireContext(), "Please enter both first and last name", Toast.LENGTH_SHORT).show()
