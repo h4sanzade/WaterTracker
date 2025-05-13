@@ -33,14 +33,22 @@ class MainMenuFragment : Fragment() {
         val username = sharedPrefs.getString("username", null)
 
         if (username == null) {
-            showNameInputDialog() // Mandatory input if no username exists
+            showNameInputDialog()
         } else {
-            // Use GreetingUtil to get the appropriate time-based greeting
-            val greetingMessage = GreetingUtil.getGreetingMessage(username)
-            binding.greetingTextView.text = greetingMessage
+            updateGreeting(username)
         }
+    }
 
-
+    private fun updateGreeting(username: String) {
+        val greeting = when (java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY)) {
+            in 5..11 -> "Good morning"
+            in 12..16 -> "Good afternoon"
+            in 17..20 -> "Good evening"
+            else -> "Good night"
+        }
+        
+        binding.greetingPrefix.text = "$greeting,"
+        binding.greetingName.text = username
     }
 
     private fun showNameInputDialog() {
@@ -54,7 +62,6 @@ class MainMenuFragment : Fragment() {
             .setCancelable(false)
             .create()
 
-        // Dialog animation
         dialog.window?.attributes?.windowAnimations = R.style.CustomDialogAnimation
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
@@ -68,11 +75,7 @@ class MainMenuFragment : Fragment() {
                 sharedPrefs.edit().putString("username", fullName).apply()
 
                 Toast.makeText(requireContext(), "Name saved!", Toast.LENGTH_SHORT).show()
-
-                // Set the appropriate time-based greeting
-                val greetingMessage = GreetingUtil.getGreetingMessage(fullName)
-                binding.greetingTextView.text = greetingMessage
-
+                updateGreeting(fullName)
                 dialog.dismiss()
             } else {
                 Toast.makeText(requireContext(), "Please enter both first and last name", Toast.LENGTH_SHORT).show()
