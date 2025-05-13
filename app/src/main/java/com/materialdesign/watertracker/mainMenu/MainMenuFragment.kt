@@ -62,7 +62,7 @@ class MainMenuFragment : Fragment() {
             if (firstName.isNotEmpty() && lastName.isNotEmpty()) {
                 val fullName = "$firstName $lastName"
 
-                // Use PreferenceHelper to save username
+
                 PreferenceHelper.saveUsername(requireContext(), fullName)
 
                 Toast.makeText(requireContext(), "Name saved!", Toast.LENGTH_SHORT).show()

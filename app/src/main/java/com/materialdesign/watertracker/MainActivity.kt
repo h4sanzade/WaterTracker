@@ -5,7 +5,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.findNavController
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,16 +17,5 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val sharedPrefs = getSharedPreferences("MyPrefs", MODE_PRIVATE)
-        val isFirstLaunch = !sharedPrefs.contains("username")
-
-        if (!isFirstLaunch) {
-
-            findViewById<androidx.fragment.app.FragmentContainerView>(R.id.nav_host_fragment)
-                .post {
-                    val navController = findNavController(R.id.nav_host_fragment)
-                    navController.navigate(R.id.action_global_mainMenuFragment)
-                }
-        }
     }
 }

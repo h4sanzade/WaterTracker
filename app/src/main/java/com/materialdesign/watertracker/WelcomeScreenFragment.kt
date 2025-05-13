@@ -37,7 +37,6 @@ class WelcomeScreenFragment : Fragment() {
 
         startSequentialAnimation(dots, 0)
 
-
         handler.postDelayed({
             navigateToNextFragment()
         }, splashDelay)
@@ -45,7 +44,16 @@ class WelcomeScreenFragment : Fragment() {
 
     private fun navigateToNextFragment() {
         if (isAdded && !isDetached()) {
-            findNavController().navigate(R.id.action_welcomeScreenFragment_to_entranceSliderOneFragment)
+
+            val hasCompletedOnboarding = !PreferenceHelper.isFirstLaunch(requireContext())
+
+            if (hasCompletedOnboarding) {
+
+                findNavController().navigate(R.id.action_global_mainMenuFragment)
+            } else {
+
+                findNavController().navigate(R.id.action_welcomeScreenFragment_to_entranceSliderOneFragment)
+            }
         }
     }
 

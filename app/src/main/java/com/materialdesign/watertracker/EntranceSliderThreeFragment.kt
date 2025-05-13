@@ -47,23 +47,20 @@ class EntranceSliderThreeFragment : Fragment() {
     }
 
     private fun showNameInputDialog() {
-        // Define pop-up content
+
         val dialogView = layoutInflater.inflate(R.layout.dialog_name_input, null)
         val firstNameEditText = dialogView.findViewById<EditText>(R.id.etFirstName)
         val lastNameEditText = dialogView.findViewById<EditText>(R.id.etLastName)
         val saveButton = dialogView.findViewById<Button>(R.id.btnSave)
 
-        // Create AlertDialog
         val dialog = AlertDialog.Builder(requireContext())
             .setView(dialogView)
             .setCancelable(false)
             .create()
 
-        // Dialog animation
         dialog.window?.attributes?.windowAnimations = R.style.CustomDialogAnimation
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        // Save button click
         saveButton.setOnClickListener {
             val firstName = firstNameEditText.text.toString().trim()
             val lastName = lastNameEditText.text.toString().trim()
@@ -71,25 +68,25 @@ class EntranceSliderThreeFragment : Fragment() {
             if (firstName.isNotEmpty() && lastName.isNotEmpty()) {
                 val fullName = "$firstName $lastName"
 
-                // Use PreferenceHelper to save username
+
                 PreferenceHelper.saveUsername(requireContext(), fullName)
 
-                // Show toast after name is saved
+
                 Toast.makeText(requireContext(), "Name saved!", Toast.LENGTH_SHORT).show()
 
-                // Show greeting with user's name
+
                 val greetingMessage = GreetingUtil.getGreetingMessage(fullName)
                 Toast.makeText(requireContext(), greetingMessage, Toast.LENGTH_SHORT).show()
 
-                // Navigate to MainMenuFragment using NavController
+
                 findNavController().navigate(R.id.action_entranceSliderThreeFragment_to_mainMenuFragment)
-                dialog.dismiss() // Close dialog
+                dialog.dismiss()
             } else {
                 Toast.makeText(requireContext(), "Please enter both first and last name", Toast.LENGTH_SHORT).show()
             }
         }
 
-        dialog.show() // Show dialog
+        dialog.show()
     }
 
     override fun onDestroyView() {
