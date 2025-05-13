@@ -22,7 +22,12 @@ class MainActivity : AppCompatActivity() {
         val isFirstLaunch = !sharedPrefs.contains("username")
 
         if (!isFirstLaunch) {
-            findNavController(R.id.nav_host_fragment).navigate(R.id.mainMenuFragment)
+
+            findViewById<androidx.fragment.app.FragmentContainerView>(R.id.nav_host_fragment)
+                .post {
+                    val navController = findNavController(R.id.nav_host_fragment)
+                    navController.navigate(R.id.action_global_mainMenuFragment)
+                }
         }
     }
 }

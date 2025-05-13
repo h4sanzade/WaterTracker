@@ -1,6 +1,5 @@
 package com.materialdesign.watertracker.mainMenu
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.materialdesign.watertracker.PreferenceHelper
 import com.materialdesign.watertracker.R
 import com.materialdesign.watertracker.databinding.FragmentMainMenuBinding
 
@@ -29,8 +29,7 @@ class MainMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sharedPrefs = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        val username = sharedPrefs.getString("username", null)
+        val username = PreferenceHelper.getUsername(requireContext())
 
         if (username == null) {
             showNameInputDialog()
@@ -62,8 +61,9 @@ class MainMenuFragment : Fragment() {
 
             if (firstName.isNotEmpty() && lastName.isNotEmpty()) {
                 val fullName = "$firstName $lastName"
-                val sharedPrefs = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-                sharedPrefs.edit().putString("username", fullName).apply()
+
+                // Use PreferenceHelper to save username
+                PreferenceHelper.saveUsername(requireContext(), fullName)
 
                 Toast.makeText(requireContext(), "Name saved!", Toast.LENGTH_SHORT).show()
                 val greetingMessage = GreetingUtil.getGreetingMessage(fullName)

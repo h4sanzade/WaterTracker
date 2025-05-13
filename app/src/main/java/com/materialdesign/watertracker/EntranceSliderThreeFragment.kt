@@ -1,6 +1,5 @@
 package com.materialdesign.watertracker
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.materialdesign.watertracker.databinding.FragmentEntranceSliderThreeBinding
-import com.materialdesign.watertracker.R
 import com.materialdesign.watertracker.mainMenu.GreetingUtil
 
 class EntranceSliderThreeFragment : Fragment() {
@@ -72,8 +70,9 @@ class EntranceSliderThreeFragment : Fragment() {
 
             if (firstName.isNotEmpty() && lastName.isNotEmpty()) {
                 val fullName = "$firstName $lastName"
-                val sharedPrefs = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-                sharedPrefs.edit().putString("username", fullName).apply()
+
+                // Use PreferenceHelper to save username
+                PreferenceHelper.saveUsername(requireContext(), fullName)
 
                 // Show toast after name is saved
                 Toast.makeText(requireContext(), "Name saved!", Toast.LENGTH_SHORT).show()

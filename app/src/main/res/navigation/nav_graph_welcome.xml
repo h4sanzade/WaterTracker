@@ -9,7 +9,7 @@
         android:id="@+id/welcomeScreenFragment"
         android:name="com.materialdesign.watertracker.WelcomeScreenFragment"
         android:label="fragment_welcome_screen"
-        tools:layout="@layout/fragment_welcome_screen">
+        tools:layout="@layout/fragment_welcome_screen" >
         <action
             android:id="@+id/action_welcomeScreenFragment_to_entranceSliderOneFragment"
             app:destination="@id/entranceSliderOneFragment" />
@@ -19,7 +19,7 @@
         android:id="@+id/entranceSliderOneFragment"
         android:name="com.materialdesign.watertracker.EntranceSliderOneFragment"
         android:label="fragment_entrance_slider_one"
-        tools:layout="@layout/fragment_entrance_slider_one">
+        tools:layout="@layout/fragment_entrance_slider_one" >
         <action
             android:id="@+id/action_entranceSliderOneFragment_to_entranceSliderTwoFragment"
             app:destination="@id/entranceSliderTwoFragment" />
@@ -29,9 +29,9 @@
         android:id="@+id/entranceSliderTwoFragment"
         android:name="com.materialdesign.watertracker.EntranceSliderTwoFragment"
         android:label="fragment_entrance_slider_two"
-        tools:layout="@layout/fragment_entrance_slider_two">
+        tools:layout="@layout/fragment_entrance_slider_two" >
         <action
-            android:id="@+id/action_entranceSliderTwoFragment_to_entranceSliderThreeFragment"
+            android:id="@+id/entranceSliderThreeFragment"
             app:destination="@id/entranceSliderThreeFragment" />
     </fragment>
 
@@ -39,18 +39,21 @@
         android:id="@+id/entranceSliderThreeFragment"
         android:name="com.materialdesign.watertracker.EntranceSliderThreeFragment"
         android:label="fragment_entrance_slider_three"
-        tools:layout="@layout/fragment_entrance_slider_three">
+        tools:layout="@layout/fragment_entrance_slider_three" >
         <action
             android:id="@+id/action_entranceSliderThreeFragment_to_mainMenuFragment"
-            app:destination="@id/mainMenuFragment"
-            app:popUpTo="@id/welcomeScreenFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/mainMenuFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="com.materialdesign.watertracker.mainMenu.MainMenuFragment"
-        android:label="fragment_main_menu"
+        android:label="MainMenuFragment"
         tools:layout="@layout/fragment_main_menu" />
 
+    <action
+        android:id="@+id/action_global_mainMenuFragment"
+        app:destination="@id/mainMenuFragment"
+        app:popUpTo="@id/welcomeScreenFragment"
+        app:popUpToInclusive="true" />
 </navigation>
