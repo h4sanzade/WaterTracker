@@ -1,0 +1,5 @@
+<resources>
+    <style name="CustomDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+    </style>
+</resources>
