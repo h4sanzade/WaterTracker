@@ -5,19 +5,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="24dp"
+    android:background="#F4F8FB"
     android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/greetingTextView"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome!"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="14sp"
-        android:textColor="#1E88E5"
-        android:layout_gravity="center_horizontal"/>
+        app:layout_constraintStart_toStartOf="parent">
 
+        <TextView
+            android:id="@+id/greetingPrefix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="#90A5B4"
+            android:fontFamily="@font/poppinsregular"/>
 
+        <TextView
+            android:id="@+id/greetingName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsbold"
+            android:layout_marginTop="4dp"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
