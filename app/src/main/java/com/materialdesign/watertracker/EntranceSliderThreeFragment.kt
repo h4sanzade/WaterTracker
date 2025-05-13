@@ -10,10 +10,10 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.materialdesign.watertracker.databinding.FragmentEntranceSliderThreeBinding
 import com.materialdesign.watertracker.R
 import com.materialdesign.watertracker.mainMenu.GreetingUtil
-import com.materialdesign.watertracker.mainMenu.MainMenuFragment
 
 class EntranceSliderThreeFragment : Fragment() {
 
@@ -82,8 +82,8 @@ class EntranceSliderThreeFragment : Fragment() {
                 val greetingMessage = GreetingUtil.getGreetingMessage(fullName)
                 Toast.makeText(requireContext(), greetingMessage, Toast.LENGTH_SHORT).show()
 
-                // Navigate to MainMenuFragment
-                navigateToMainMenuFragment(fullName)
+                // Navigate to MainMenuFragment using NavController
+                findNavController().navigate(R.id.action_entranceSliderThreeFragment_to_mainMenuFragment)
                 dialog.dismiss() // Close dialog
             } else {
                 Toast.makeText(requireContext(), "Please enter both first and last name", Toast.LENGTH_SHORT).show()
@@ -91,19 +91,6 @@ class EntranceSliderThreeFragment : Fragment() {
         }
 
         dialog.show() // Show dialog
-    }
-
-    private fun navigateToMainMenuFragment(userName: String) {
-        // Navigate to MainMenuFragment
-        val mainMenuFragment = MainMenuFragment().apply {
-            arguments = Bundle().apply {
-                putString("username", userName)
-            }
-        }
-
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, mainMenuFragment) // Make sure this ID matches your container
-            .commit()
     }
 
     override fun onDestroyView() {

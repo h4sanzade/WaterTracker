@@ -33,15 +33,14 @@ class MainMenuFragment : Fragment() {
         val username = sharedPrefs.getString("username", null)
 
         if (username == null) {
-            showNameInputDialog() // Zorunlu giriş
+            showNameInputDialog() // Mandatory input if no username exists
         } else {
-            binding.greetingTextView.text = "Welcome back, $username!"
+            // Use GreetingUtil to get the appropriate time-based greeting
+            val greetingMessage = GreetingUtil.getGreetingMessage(username)
+            binding.greetingTextView.text = greetingMessage
         }
 
-        // Eğer tekrar kullanıcı adı değiştirme butonu varsa örnek:
-        binding.yourButton.setOnClickListener {
-            showNameInputDialog()
-        }
+
     }
 
     private fun showNameInputDialog() {
@@ -55,7 +54,7 @@ class MainMenuFragment : Fragment() {
             .setCancelable(false)
             .create()
 
-        // Dialog animasyonu
+        // Dialog animation
         dialog.window?.attributes?.windowAnimations = R.style.CustomDialogAnimation
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
@@ -69,7 +68,11 @@ class MainMenuFragment : Fragment() {
                 sharedPrefs.edit().putString("username", fullName).apply()
 
                 Toast.makeText(requireContext(), "Name saved!", Toast.LENGTH_SHORT).show()
-                binding.greetingTextView.text = "Welcome, $fullName!"
+
+                // Set the appropriate time-based greeting
+                val greetingMessage = GreetingUtil.getGreetingMessage(fullName)
+                binding.greetingTextView.text = greetingMessage
+
                 dialog.dismiss()
             } else {
                 Toast.makeText(requireContext(), "Please enter both first and last name", Toast.LENGTH_SHORT).show()
