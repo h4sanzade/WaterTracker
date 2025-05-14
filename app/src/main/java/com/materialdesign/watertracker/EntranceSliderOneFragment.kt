@@ -11,6 +11,8 @@ import com.materialdesign.watertracker.databinding.FragmentEntranceSliderOneBind
 class EntranceSliderOneFragment : Fragment() {
 
     private var _binding: FragmentEntranceSliderOneBinding? = null
+
+
     private val binding get() = _binding!!
     private var currentPage = 0
 
