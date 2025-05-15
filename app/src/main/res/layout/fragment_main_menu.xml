@@ -57,18 +57,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerCart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp">
 
 
-            <LinearLayout
-                android:id="@+id/contentLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="8dp">
+
 
                 <TextView
                     android:id="@+id/time_text"
@@ -76,6 +72,9 @@
                     android:layout_height="wrap_content"
                     android:text="11:00 AM"
                     android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="@id/containerCart"
+                    app:layout_constraintStart_toStartOf="parent"
+
                     android:textSize="16sp"
                     android:textColor="@android:color/black" />
 
@@ -86,17 +85,21 @@
                     android:layout_marginTop="4dp"
                     android:text="200ml (2 Glass)"
                     android:textColor="#808080"
+                    app:layout_constraintTop_toBottomOf="@id/time_text"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:textSize="14sp" />
-            </LinearLayout>
+
 
 
             <ImageView
                 android:id="@+id/drop_big"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignBottom="@+id/waveContainer"
                 android:layout_marginBottom="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginEnd="16dp"
                 android:src="@drawable/double_drop_water"
                 android:elevation="2dp"
@@ -107,6 +110,9 @@
                 android:id="@+id/waveContainer"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                app:layout_constraintBottom_toBottomOf="@id/containerCart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 android:layout_alignParentBottom="true">
 
                 <ImageView
@@ -122,11 +128,10 @@
                 <ImageView
                     android:id="@+id/wave2"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="bottom"
                     android:scaleType="fitXY"
                     android:src="@drawable/water_wave1"
-                    android:alpha="0.9"
                     app:tint="#08ABFF" />
             </FrameLayout>
 
@@ -136,8 +141,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="75dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/add_your_goal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="50dp"
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/poppinsregular"
@@ -151,6 +159,164 @@
 
 
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/progressImageChar"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/progress_chaimg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/waterGoalCard">
+    </ImageView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/statisticsCard"
+        android:layout_width="190dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="140dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/progressImageChar"
+        app:layout_constraintTop_toBottomOf="@id/waterGoalCard"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/statContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/statIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/soup_vct"
+                app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/statTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_09_30"
+                android:textSize="14sp"
+                android:textColor="#90A5B4"
+                android:fontFamily="@font/poppinsbold"
+               app:layout_constraintTop_toTopOf="@id/statContainer"
+                app:layout_constraintStart_toStartOf="@id/statContainer"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:id="@+id/statValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_100_ml"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppinsregular"
+                app:layout_constraintStart_toEndOf="@id/statIcon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_10"
+                app:layout_constraintEnd_toEndOf="@id/statContainer"
+                app:layout_constraintBottom_toBottomOf="@id/statContainer"
+                android:textColor="#90A5B4"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="12sp">
+
+            </TextView>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/percent_vect"
+                app:layout_constraintEnd_toEndOf="@id/statContainer"
+                app:layout_constraintTop_toTopOf="@id/statContainer"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="65dp">
+
+            </ImageView>
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/targetCard"
+        android:layout_width="118dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="140dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/statisticsCard"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent">
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/targetContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/target"
+                android:textSize="12sp"
+                android:textColor="#90A5B4"
+                android:fontFamily="@font/poppinsregular"
+                app:layout_constraintTop_toTopOf="@id/targetContainer"
+                app:layout_constraintStart_toStartOf="@id/targetContainer">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_2000ml"
+                app:layout_constraintBottom_toBottomOf="@id/targetContainer"
+                app:layout_constraintStart_toStartOf="@id/targetContainer"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppinsbold"
+                android:textSize="12sp">
+
+            </TextView>
+
+
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/go_to_dashboard"
+        android:backgroundTint="#5DCCFC"
+        app:cornerRadius="10dp"
+        app:layout_constraintTop_toBottomOf="@id/targetCard"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="8dp"
+        android:layout_marginStart="115dp">
+
+    </com.google.android.material.button.MaterialButton>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

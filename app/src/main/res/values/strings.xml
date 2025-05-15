@@ -16,4 +16,10 @@
     <string name="first_name">First name</string>
     <string name="welcome">Welcome!</string>
     <string name="add_your_goal">Add Your Goal</string>
+    <string name="_09_30">09:30</string>
+    <string name="_100_ml">100 ml</string>
+    <string name="_10">10%</string>
+    <string name="target">Target</string>
+    <string name="_2000ml">2000ml</string>
+    <string name="go_to_dashboard">Go to Dashboard</string>
 </resources>
