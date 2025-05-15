@@ -179,6 +179,7 @@
         android:layout_height="76dp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="140dp"
+        android:layout_marginEnd="25dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
         app:layout_constraintStart_toStartOf="@id/progressImageChar"
@@ -261,62 +262,104 @@
         android:layout_width="118dp"
         android:layout_height="76dp"
         android:layout_marginTop="15dp"
-        android:layout_marginStart="140dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
         app:layout_constraintTop_toBottomOf="@id/statisticsCard"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="25dp"
         app:layout_constraintEnd_toEndOf="parent">
-        
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/targetContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp">
-            
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/target"
-                android:textSize="12sp"
-                android:textColor="#90A5B4"
                 android:fontFamily="@font/poppinsregular"
-                app:layout_constraintTop_toTopOf="@id/targetContainer"
+                android:text="@string/target"
+                android:textColor="#90A5B4"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/targetContainer"
+                app:layout_constraintTop_toTopOf="@id/targetContainer">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:text="@string/_2000ml"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/targetContainer"
                 app:layout_constraintStart_toStartOf="@id/targetContainer">
 
             </TextView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/_2000ml"
-                app:layout_constraintBottom_toBottomOf="@id/targetContainer"
-                app:layout_constraintStart_toStartOf="@id/targetContainer"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppinsbold"
-                android:textSize="12sp">
 
-            </TextView>
-
-
-            
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.button.MaterialButton
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dashButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/go_to_dashboard"
-        android:backgroundTint="#5DCCFC"
-        app:cornerRadius="10dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/targetCard"
-        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:elevation="8dp"
-        android:layout_marginStart="115dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardUseCompatPadding="true">
 
-    </com.google.android.material.button.MaterialButton>
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/go_to_dashboard"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#5DCCFC"
+            app:cornerRadius="12dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textSucces"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/you_got_50_of_today_s_goal_keep_focus_on_your_health"
+        android:textSize="12sp"
+        android:textColor="#90A5B4"
+        android:fontFamily="@font/poppinsregular"
+        app:layout_constraintTop_toBottomOf="@id/dashButton"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </TextView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:itemHorizontalTranslationEnabled="false"
+        app:itemIconSize="24dp"
+        app:itemTextAppearanceActive="@style/BottomNavigationText.Active"
+        app:itemTextAppearanceInactive="@style/BottomNavigationText.Inactive"
+        app:itemPaddingTop="6dp"
+        app:itemPaddingBottom="6dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textSucces" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
