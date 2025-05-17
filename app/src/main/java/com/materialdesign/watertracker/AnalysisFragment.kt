@@ -26,7 +26,7 @@ class AnalysisFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Burada seçili menü öğesini ayarla (Analysis)
+
         binding.bottomNavigation.selectedItemId = R.id.nav_analysis
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -39,14 +39,14 @@ class AnalysisFragment : Fragment() {
             }
         }
 
-        // Icon ve text renklerini ayarla
+
         val states = arrayOf(
             intArrayOf(android.R.attr.state_checked),
             intArrayOf(-android.R.attr.state_checked)
         )
         val iconColors = intArrayOf(
-            Color.parseColor("#08ABFF"), // seçili ikon mavisi
-            Color.parseColor("#808080")  // seçili olmayan gri
+            Color.parseColor("#08ABFF"),
+            Color.parseColor("#808080")
         )
         val colorStateList = ColorStateList(states, iconColors)
         binding.bottomNavigation.itemIconTintList = colorStateList

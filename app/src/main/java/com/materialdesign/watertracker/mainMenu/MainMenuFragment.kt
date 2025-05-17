@@ -32,7 +32,7 @@ class MainMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Burada seçili menü öğesini ayarla (Home)
+
         binding.bottomNavigation.selectedItemId = R.id.nav_home
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -45,7 +45,7 @@ class MainMenuFragment : Fragment() {
             }
         }
 
-        // Kullanıcı adı kontrolü ve dialog gösterimi
+
         val username = PreferenceHelper.getUsername(requireContext())
         if (username == null) {
             showNameInputDialog()
@@ -56,14 +56,14 @@ class MainMenuFragment : Fragment() {
             binding.greetingName.text = parts[1].trim()
         }
 
-        // Icon ve text renklerini ayarla
+
         val states = arrayOf(
             intArrayOf(android.R.attr.state_checked),
             intArrayOf(-android.R.attr.state_checked)
         )
         val iconColors = intArrayOf(
-            Color.parseColor("#08ABFF"), // seçili ikon mavisi
-            Color.parseColor("#808080")  // seçili olmayan gri
+            Color.parseColor("#08ABFF"),
+            Color.parseColor("#808080")
         )
         val colorStateList = ColorStateList(states, iconColors)
         binding.bottomNavigation.itemIconTintList = colorStateList
