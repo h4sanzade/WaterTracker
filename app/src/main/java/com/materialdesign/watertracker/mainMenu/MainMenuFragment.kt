@@ -11,7 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.navigation.fragment.findNavController
 import com.materialdesign.watertracker.PreferenceHelper
 import com.materialdesign.watertracker.R
 import com.materialdesign.watertracker.databinding.FragmentMainMenuBinding
@@ -32,9 +32,21 @@ class MainMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Kullanıcı adı kontrolü
-        val username = PreferenceHelper.getUsername(requireContext())
+        // Burada seçili menü öğesini ayarla (Home)
+        binding.bottomNavigation.selectedItemId = R.id.nav_home
 
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_analysis -> {
+                    findNavController().navigate(R.id.analysisFragment)
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // Kullanıcı adı kontrolü ve dialog gösterimi
+        val username = PreferenceHelper.getUsername(requireContext())
         if (username == null) {
             showNameInputDialog()
         } else {
@@ -44,23 +56,19 @@ class MainMenuFragment : Fragment() {
             binding.greetingName.text = parts[1].trim()
         }
 
-        // Icon rengi mavi, text sabit gri
+        // Icon ve text renklerini ayarla
         val states = arrayOf(
             intArrayOf(android.R.attr.state_checked),
             intArrayOf(-android.R.attr.state_checked)
         )
         val iconColors = intArrayOf(
-            Color.parseColor("#08ABFF"), // selected icon
-            Color.parseColor("#808080")  // unselected icon
+            Color.parseColor("#08ABFF"), // seçili ikon mavisi
+            Color.parseColor("#808080")  // seçili olmayan gri
         )
         val colorStateList = ColorStateList(states, iconColors)
-
-        // Eğer BottomNavigationView fragment içinde ise
         binding.bottomNavigation.itemIconTintList = colorStateList
 
-        // Text rengi sabit gri
-        val textColor = Color.parseColor("#808080")
-        binding.bottomNavigation.setItemTextColor(ColorStateList.valueOf(textColor))
+        binding.bottomNavigation.setItemTextColor(ColorStateList.valueOf(Color.parseColor("#808080")))
     }
 
     private fun showNameInputDialog() {

@@ -8,7 +8,6 @@
         android:icon="@drawable/ic_chart"
         android:title="Analysis" />
 
-    <!-- Ortadaki item boş -->
     <item
         android:id="@+id/nav_dummy"
         android:enabled="false"

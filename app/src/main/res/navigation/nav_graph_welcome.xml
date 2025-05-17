@@ -49,11 +49,24 @@
         android:id="@+id/mainMenuFragment"
         android:name="com.materialdesign.watertracker.mainMenu.MainMenuFragment"
         android:label="MainMenuFragment"
-        tools:layout="@layout/fragment_main_menu" />
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_analysisFragment2"
+            app:destination="@id/analysisFragment" />
+    </fragment>
 
     <action
         android:id="@+id/action_global_mainMenuFragment"
         app:destination="@id/mainMenuFragment"
         app:popUpTo="@id/welcomeScreenFragment"
         app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/analysisFragment"
+        android:name="com.materialdesign.watertracker.AnalysisFragment"
+        android:label="fragment_analysis"
+        tools:layout="@layout/fragment_analysis" >
+        <action
+            android:id="@+id/action_analysisFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
 </navigation>
